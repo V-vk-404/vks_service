@@ -25,7 +25,16 @@ class AdminServiceProvider extends Component
             'confirmButtonText' => 'Yes, delete it!'
         ]);
     }
-    public function delete($id)
+    // public function delete($id)
+    // {
+    //     $sproviders = User::find($id);
+    //     if ($sproviders->image) {
+    //         unlink('images/sproviders' . '/' . $sproviders->image);
+    //     }
+    //     $sproviders->delete();
+    //     session()->flash('message', 'Service Provider has been deleted successfully!');
+    // }
+    public function deleteServiceProvider($id)
     {
         $sproviders = User::find($id);
         if ($sproviders->image) {
@@ -37,6 +46,6 @@ class AdminServiceProvider extends Component
     public function render()
     {
         $sproviders = User::where('u_type', 'SPV')->paginate(5);
-        return view('livewire.admin.admin-service-provider', ['sproviders' => $sproviders])->layout('FrontEnd.layouts.guest');
+        return view('livewire.admin.admin-service-provider', ['sproviders' => $sproviders])->layout('frontend.layouts.guest');
     }
 }

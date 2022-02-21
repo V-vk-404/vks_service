@@ -21,17 +21,32 @@ class AdminServicesComponent extends Component
             'confirmButtonText' => 'Yes, delete it!'
         ]);
     }
-    public function delete($id)
+    // public function delete($id)
+    // {
+    //     $service = Service::find($id);
+    //     if ($service->thumbnail) {
+    //         unlink('images/services/thumbnails' . '/' . $service->thumbnail);
+    //     }
+    //     if ($service->image) {
+    //         unlink('images/services' . '/' . $service->image);
+    //     }
+    //     $service->delete();
+    //     session()->flash('message', 'Service has been deleted successfully!');
+    // }
+    public function deleteService($id)
     {
         $service = Service::find($id);
-        if ($service->thumbnail) {
-            unlink('images/services/thumbnails' . '/' . $service->thumbnail);
+        if ($service->thumbnail) 
+        {
+            unlink('images/services/thumbnails'.'/'.$service->thumbnail);
         }
-        if ($service->image) {
-            unlink('images/services' . '/' . $service->image);
+        if ($service->image) 
+        {
+            unlink('images/services'.'/'.$service->image);
         }
         $service->delete();
-        session()->flash('message', 'Service has been deleted successfully!');
+        session()->flash('message','Service has been deleted successfully!');
+
     }
     public function render()
     {

@@ -47,6 +47,6 @@ class AdminAddServiceCategoryComponent extends Component
     }
     public function render()
     {
-        return view('livewire.admin.admin-add-service-category-component')->layout('FrontEnd.layouts.guest');
+        return view('livewire.admin.admin-add-service-category-component')->layout('frontend.layouts.guest');
     }
 }

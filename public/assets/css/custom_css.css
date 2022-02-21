@@ -310,10 +310,13 @@ body {
         height: 80px !important;
         width: 80px !important;
     }
-
+    .mini-slider{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
     .owl-item-slider img {
-        height: 80px !important;
-        width: 80px !important;
+        height: 70px !important;
+        width: 70px !important;
         margin-left: 5px;
     }
 

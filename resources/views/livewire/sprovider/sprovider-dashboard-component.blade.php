@@ -111,7 +111,7 @@
                                         style="text-align: center; font-weight:500; font-size:1.6rem;"><i
                                             class="fa ft-briefcase  fa-1x"></i> Work History</h4>
                                 </div>
-                                @if (Session::has('message'))
+                                {{-- @if (Session::has('message'))
                                     <script>
                                         Swal.fire({
                                             icon: 'success',
@@ -119,8 +119,18 @@
                                             text: 'Great Job!',
                                         });
                                     </script>
+                                @endif --}}
+                                @if (Session::has('message'))
+                                    <div class="alert alert-success alert-dismissible mb-2" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <strong>{{ Session::get('message') }}</strong>
+                                    </div>
                                 @endif
                                 <div class="card-content">
+
                                     <div class=" table-responsive">
                                         <table class="table text-center table-striped table-hover ">
                                             <thead>
@@ -149,10 +159,10 @@
                                                                 <td>{{ $paytm->created_at }}</td>
                                                                 <td>
                                                                     <a href="#"
-                                                                        onclick="confirm('Are you sure, you want to cancel this service')||event.stopImmediatePropagation()"
+                                                                        onclick="confirm('Are you sure, you want to delete this booking histroy!')||event.stopImmediatePropagation()"
                                                                         wire:click.prevent="deleteService({{ $paytm->id }})">
                                                                         <i
-                                                                            class="ft-x fa-2x mr-2 text-danger"></i>
+                                                                            class="ft-x text-danger fa-2x mr-2"></i>
                                                                     </a>
                                                                     {{-- <a type="button" title="Cancel"
                                                                         wire:click="deleteConfirm({{ $paytm->id }})"><i
@@ -160,7 +170,6 @@
                                                                 </td>
                                                             </tr>
                                                         @endif
-
                                                     @endforeach
                                                 @else
                                                     <tr>

@@ -14,7 +14,7 @@
                             </div>
                             <br>
                             <div class="card-content px-4">
-                                @if (Session::has('message'))
+                                {{-- @if (Session::has('message'))
                                     <script>
                                         Swal.fire({
                                             icon: 'success',
@@ -22,7 +22,17 @@
                                             text: 'Great Job!',
                                         });
                                     </script>
-                                @endif
+                                @endif --}}
+                                @if (Session::has('message'))
+                                        <div class="alert alert-success alert-dismissible mb-2" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h3>{{ Session::get('message') }}</h3>
+                                          </div>
+
+                                        </div>
+                                    @endif
                                 <form enctype="multipart/form-data" method="post"
                                     wire:submit.prevent="addServiceProvider">
                                     @csrf

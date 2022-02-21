@@ -15,7 +15,7 @@ class CustomerFeedbackComponent extends Component
     public function render()
     {
         $feedback = CustomerFeedback::all();
-        return view('livewire.customer.customer-feedback-component', ['feedback' => $feedback])->layout('FrontEnd.layouts.guest');
+        return view('livewire.customer.customer-feedback-component', ['feedback' => $feedback])->layout('frontend.layouts.guest');
     }
     public function addFeedback()
     {

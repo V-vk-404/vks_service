@@ -792,7 +792,7 @@ hr.tall {
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    font-size: 5vw;
+    font-size: 3.5vw;
     filter: drop-shadow(0px 2px 2px #000);
     width: 100% !important;
     font-weight: bold;
@@ -1242,7 +1242,7 @@ span.custom-select {
 /* Section Titles ---------------------------------------------*/
 .section-title-01 {
     height: 360px;
-    background-color: #262626;
+    background: url("/images/2-1.png");
     text-align: center;
     position: relative;
     width: 100%;
@@ -2511,12 +2511,14 @@ hr.separator:before {
     display: block;
     font-weight: 600;
     color: #062b5b;
+    padding: 5px;
 }
 .counts .count-box p {
     padding: 0;
     margin: 0;
     font-family: "Roboto", sans-serif;
     font-size: 14px;
+    padding: 2px;
 }
 
 /*-------------------------------------
@@ -2740,7 +2742,7 @@ hr.separator:before {
 }
 
 .image_02_parallax {
-    background: url("/images/2-1.png");
+    background: url("/images/2-1.png");  
 }
 
 .image_03_parallax {
@@ -5395,8 +5397,16 @@ i.fa-truck {
         width: 49%;
     }
 }
+@media screen and (min-width: 1401px) {
+    .filter-title {
+        top: 12% !important;
+    }
 
-@media (min-width: 768px) and (max-width: 1500px) {
+    .filter-header input[type="text"] {
+        min-width: 340px !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1400px) {
     .filter-title {
         top: 12% !important;
     }

@@ -23,7 +23,7 @@
                                 <hr>
                                 <div class="card-content table-responsive">
                                     <div class="card-body">
-                                        @if (Session::has('message'))
+                                        {{-- @if (Session::has('message'))
                                             <script>
                                                 Swal.fire({
                                                     icon: 'success',
@@ -31,9 +31,17 @@
                                                     text: 'Great Job!',
                                                 });
                                             </script>
+                                        @endif --}}
+                                        @if (Session::has('message'))
+                                            <div class="alert alert-success alert-dismissible mb-2" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <strong>{{ Session::get('message') }}</strong>
+                                            </div>
                                         @endif
-                                        <table
-                                            class="table text-center  table-striped table-hover shadow ">
+                                        <table class="table text-center  table-striped table-hover shadow ">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -74,9 +82,14 @@
                                                         <td>{{ $sprovider->phone }}</td>
                                                         <td>{{ $sprovider->address }}</td>
                                                         <td>
-                                                            <a type="button" title="Delete" class=""
+                                                            {{-- <a type="button" title="Delete" class=""
                                                                 wire:click="deleteConfirm({{ $sprovider->id }})"><i
-                                                                    class="ft-trash-2 fa-2x mr-2  text-danger"></i></a>
+                                                                    class="ft-trash-2 fa-2x mr-2  text-danger"></i></a> --}}
+                                                            <a href="#"
+                                                                onclick="confirm('Are you sure, you want to delete this service Provider!')||event.stopImmediatePropagation()"
+                                                                wire:click.prevent="deleteServiceProvider({{ $sprovider->id }})"
+                                                                style="margin-left:10px"><i
+                                                                    class="fa fa-trash fa fa-trash  text-danger  fa-2x   mr-4"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

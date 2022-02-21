@@ -29,7 +29,7 @@
                                                 <strong>{{ Session::get('message') }}</strong>
                                             </div>
 
-                                    </div>
+                                    
                                     @endif
                                     <table class="table text-center  table-striped table-hover shadow ">
                                         <thead>

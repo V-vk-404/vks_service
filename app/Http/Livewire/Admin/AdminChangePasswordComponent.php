@@ -15,7 +15,7 @@ class AdminChangePasswordComponent extends Component
     public $confirm_password;
     public function render()
     {
-        return view('livewire.admin.admin-change-password-component')->layout('FrontEnd.layouts.guest');
+        return view('livewire.admin.admin-change-password-component')->layout('frontend.layouts.guest');
     }
 
     public function updatePassword()

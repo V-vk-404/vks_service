@@ -14,7 +14,7 @@ class SproviderChangePassword extends Component
     public function render()
     {
         
-        return view('livewire.sprovider.sprovider-change-password')->layout('FrontEnd.layouts.guest');
+        return view('livewire.sprovider.sprovider-change-password')->layout('frontend.layouts.guest');
     }
     public function updatePassword()
     {

@@ -329,7 +329,9 @@ select {
 	appearance: none;
 	font-weight: bolder;
 	color: #999;
-
+	outline: none;
+	background: none !important;
+	background-color: none !important;
 }
 
 .select {
@@ -377,7 +379,9 @@ select {
 	.container-lp {
 		grid-template-columns: 1fr;
 	}
-
+	.login-content-lp{
+		margin-top: -4rem;
+	}
 	.img-lp {
 		display: none;
 	}

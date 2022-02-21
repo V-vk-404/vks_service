@@ -50,7 +50,7 @@ class AdminAddServiceProvider extends Component
     public function render()
     {
         $scategories = ServiceCategory::all();
-        return view('livewire.admin.admin-add-service-provider', ['scategories' => $scategories])->layout('FrontEnd.layouts.guest');
+        return view('livewire.admin.admin-add-service-provider', ['scategories' => $scategories])->layout('frontend.layouts.guest');
 
     }
 }

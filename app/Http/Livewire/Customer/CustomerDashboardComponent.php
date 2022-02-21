@@ -24,7 +24,17 @@ class CustomerDashboardComponent extends Component
         ]);
     }
 
-    public function delete($id)
+    // public function delete($id)
+    // {
+    //     $paytm = Paytm::find($id);
+    //     // if ($paytm->slug_image) 
+    //     // {
+    //     //     unlink('images/services'.'/'.$paytm->slug_image);
+    //     // }
+    //     $paytm->delete();
+    //     session()->flash('message','Service has been cancelled successfully!');
+    // }
+    public function deleteService($id)
     {
         $paytm = Paytm::find($id);
         // if ($paytm->slug_image) 
@@ -32,7 +42,8 @@ class CustomerDashboardComponent extends Component
         //     unlink('images/services'.'/'.$paytm->slug_image);
         // }
         $paytm->delete();
-        session()->flash('message','Service has been cancelled successfully!');
+        session()->flash('message','Service has been deleted successfully!');
+
     }
     public function render()
     {
@@ -40,6 +51,6 @@ class CustomerDashboardComponent extends Component
         $paytms = Paytm::paginate(5);
         $totalServices = Paytm::where('user_id',Auth::user()->id)->count();
         $totalCost = Paytm::where('user_id',Auth::user()->id)->sum('price');
-        return view('livewire.customer.customer-dashboard-component',['paytms'=>$paytms,'totalServices'=>$totalServices,'totalCost'=>$totalCost])->layout('FrontEnd.layouts.guest');
+        return view('livewire.customer.customer-dashboard-component',['paytms'=>$paytms,'totalServices'=>$totalServices,'totalCost'=>$totalCost])->layout('frontend.layouts.guest');
     }
 }

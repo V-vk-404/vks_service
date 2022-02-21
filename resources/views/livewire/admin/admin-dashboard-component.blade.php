@@ -157,116 +157,195 @@
                                 <div class="table-responsive">
 
                                     @if (Session::has('message'))
-                                        <script>
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: "{!! Session::get('message') !!}",
-                                                text: 'Great Job!',
-                                            });
-                                        </script>
-
-                                </div>
-                                @endif
-                                <table class="table text-center  table-striped table-hover shadow ">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Location</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if ($users == null)
+                                        <div class="alert alert-success alert-dismissible mb-2" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <strong>{{ Session::get('message') }}</strong>
+                                        </div>
+                                    @endif
+                                    <table class="table text-center  table-striped table-hover shadow ">
+                                        <thead>
                                             <tr>
-                                                <td colspan="4" class="text-center">
-                                                    <h4 class="text-danger font-weight-bolder">No Booking
-                                                        History Found</h4>
-                                                </td>
-
-                                            @else
-                                                @foreach ($users as $user)
-                                            <tr>
-                                                <td><span class="badge badge-success mt-2">#U0{{ $user->id }}</span>
-                                                </td>
-                                        
-                                                <td>
-                                                    @if ($user->image)
-                                                        <img src="{{ asset('images/customer') }}/{{ $user->image }}"
-                                                            alt="" width="60" height="60"
-                                                            class="rounded-circle img-border gradient-summer">
-                                                    @else
-                                                        <img src="{{ asset('images/sproviders/default.jpg') }}" alt=""
-                                                            class="rounded-circle img-border gradient-summer" width="60"
-                                                            height="60">
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    {{ $user->name }}
-                                                </td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->phone }}</td>
-                                                <td>{{ $user->address }}</td>
+                                                <th>ID</th>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Location</th>
                                             </tr>
-                                        @endforeach
-                                        @endif
-                                    </tbody>
-                                </table>
-                                {{ $users->links('pagination.custom') }}
+                                        </thead>
+                                        <tbody>
+                                            @if ($users == null)
+                                                <tr>
+                                                    <td colspan="4" class="text-center">
+                                                        <h4 class="text-danger font-weight-bolder">No Booking
+                                                            History Found</h4>
+                                                    </td>
+
+                                                @else
+                                                    @foreach ($users as $user)
+                                                <tr>
+                                                    <td><span
+                                                            class="badge badge-success mt-2">#U0{{ $user->id }}</span>
+                                                    </td>
+
+                                                    <td>
+                                                        @if ($user->image)
+                                                            <img src="{{ asset('images/customer') }}/{{ $user->image }}"
+                                                                alt="" width="60" height="60"
+                                                                class="rounded-circle img-border gradient-summer">
+                                                        @else
+                                                            <img src="{{ asset('images/sproviders/default.jpg') }}"
+                                                                alt="" class="rounded-circle img-border gradient-summer"
+                                                                width="60" height="60">
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        {{ $user->name }}
+                                                    </td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->phone }}</td>
+                                                    <td>{{ $user->address }}</td>
+                                                </tr>
+                                            @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                    {{ $users->links('pagination.custom') }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12  col-sm-12 ">
-                    <div class="card shadow" style="overflow-x:auto;">
-                        <div class="card-header py-3">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class=" ">
-                                    <h4 class="font-weight-bolder text-info">All User Queries</h4>
+                <div class="row">
+                    <div class="col-md-12  col-sm-12 ">
+                        <div class="card shadow" style="overflow-x:auto;">
+                            <div class="card-header py-3">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class=" ">
+                                        <h4 class="font-weight-bolder text-info">All User Queries</h4>
+                                    </div>
+                                    <div class="">
+
+                                    </div>
                                 </div>
-                                <div class="">
+                                <div class="card-content">
+                                    <div class="">
+                                        <table class="table text-center table-striped table-hover shadow">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Message</th>
+                                                    <th>Received</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($contacts as $contact)
+                                                    <tr>
+                                                        <td><span
+                                                                class="badge badge-success ">#QU0{{ $contact->id }}</span>
+                                                        </td>
+                                                        <td>{{ $contact->name }}</td>
+                                                        <td>{{ $contact->email }}</td>
+                                                        <td>{{ $contact->phone }}</td>
+                                                        <td>{{ $contact->message }}</td>
+                                                        <td>{{ $contact->created_at }}</td>
+                                                        <td> <a type="button" title="Delete" class=""
+                                                                wire:click="deleteConfirm({{ $contact->id }})"><i
+                                                                    class="ft-trash-2 fa-2x mr-2  text-danger"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="Export-btn">
+                                            <a href="{{ route('admin.export_contacts') }}"
+                                                class="btn btn-success pull-right mx-3">Export Data <i
+                                                    class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="card shadow" style="overflow-x:auto;">
+                            <div class="card-header py-3">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class=" ">
+                                        <h4 class="font-weight-bolder text-info">All Service Providers</h4>
+                                    </div>
 
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content ">
                                 <div class="">
-                                    <table class="table text-center table-striped table-hover shadow">
+                                    @if (Session::has('message'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ Session::get('message') }}
+                                        </div>
+                                    @endif
+                                    <table class="table text-center table-striped table-hover  shadow px-3">
                                         <thead>
-                                            <tr>
+                                            <tr class="">
                                                 <th>ID</th>
+                                                <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Profession</th>
                                                 <th>Phone</th>
-                                                <th>Message</th>
-                                                <th>Received</th>
+                                                <th>Location</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($contacts as $contact)
+                                            @foreach ($sproviders as $sprovider)
                                                 <tr>
                                                     <td><span
-                                                            class="badge badge-success ">#QU0{{ $contact->id }}</span>
+                                                            class="badge badge-success mt-3">#SP0{{ $sprovider->id }}</span>
                                                     </td>
-                                                    <td>{{ $contact->name }}</td>
-                                                    <td>{{ $contact->email }}</td>
-                                                    <td>{{ $contact->phone }}</td>
-                                                    <td>{{ $contact->message }}</td>
-                                                    <td>{{ $contact->created_at }}</td>
-                                                    <td> <a type="button" title="Delete" class=""
-                                                            wire:click="deleteConfirm({{ $contact->id }})"><i
-                                                                class="ft-trash-2 fa-2x mr-2  text-danger"></i></a>
+                                                    <td>
+                                                        @if ($sprovider->image)
+                                                            <img src="{{ asset('images/sproviders') }}/{{ $sprovider->image }}"
+                                                                width="60" height="60" alt=""
+                                                                class="rounded-circle img-border gradient-summer">
+
+                                                        @else
+                                                            <img src="{{ asset('images/sproviders/default.jpg') }}"
+                                                                alt=""
+                                                                class="rounded-circle img-border gradient-summer "
+                                                                width="60" height="60" />
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $sprovider->name }}</td>
+                                                    <td>
+                                                        @if ($sprovider->service_category_id)
+                                                            {{ $sprovider->category->name }}
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $sprovider->phone }}</td>
+                                                    <td>{{ $sprovider->address }}</td>
+                                                    <td>
+                                                        <a href="#"
+                                                            onclick="confirm('Are you sure, you want to delete this service Provider!')||event.stopImmediatePropagation()"
+                                                            wire:click.prevent="deleteServiceProvider({{ $sprovider->id }})"
+                                                            style="margin-left:10px"><i
+                                                                class="fa fa-trash fa fa-trash  text-danger  fa-2x   mr-2"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+
                                     <div class="Export-btn">
-                                        <a href="{{ route('admin.export_contacts') }}"
+                                        <a href="{{ route('admin.export_service_provider') }}"
                                             class="btn btn-success pull-right mx-3">Export Data <i
                                                 class="fa fa-file-excel-o" aria-hidden="true"></i></a>
                                     </div>
@@ -276,160 +355,81 @@
                     </div>
                 </div>
             </div>
-            <div class="row ">
-                <div class="col-md-12 col-sm-12">
-                    <div class="card shadow" style="overflow-x:auto;">
-                        <div class="card-header py-3">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class=" ">
-                                    <h4 class="font-weight-bolder text-info">All Service Providers</h4>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="card-content ">
-                            <div class="">
-                                @if (Session::has('message'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ Session::get('message') }}
-                                    </div>
-                                @endif
-                                <table class="table text-center table-striped table-hover  shadow px-3">
-                                    <thead>
-                                        <tr class="">
-                                            <th>ID</th>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Profession</th>
-                                            <th>Phone</th>
-                                            <th>Location</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($sproviders as $sprovider)
-                                            <tr>
-                                                <td><span
-                                                        class="badge badge-success mt-3">#SP0{{ $sprovider->id }}</span>
-                                                </td>
-                                                <td>
-                                                    @if ($sprovider->image)
-                                                        <img src="{{ asset('images/sproviders') }}/{{ $sprovider->image }}"
-                                                            width="60" height="60" alt=""
-                                                            class="rounded-circle img-border gradient-summer">
-
-                                                    @else
-                                                        <img src="{{ asset('images/sproviders/default.jpg') }}"
-                                                            alt="" class="rounded-circle img-border gradient-summer "
-                                                            width="60" height="60" />
-                                                    @endif
-                                                </td>
-                                                <td>{{ $sprovider->name }}</td>
-                                                <td>
-                                                    @if ($sprovider->service_category_id)
-                                                        {{ $sprovider->category->name }}
-                                                    @endif
-                                                </td>
-                                                <td>{{ $sprovider->phone }}</td>
-                                                <td>{{ $sprovider->address }}</td>
-                                                <td>
-                                                    <a href="#"
-                                                        onclick="confirm('Are you sure, you want to delete this service Provider!')||event.stopImmediatePropagation()"
-                                                        wire:click.prevent="deleteServiceProvider({{ $sprovider->id }})"
-                                                        style="margin-left:10px"><i
-                                                            class="fa fa-trash fa fa-trash  text-danger  fa-2x   mr-2"></i></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-
-                                <div class="Export-btn">
-                                    <a href="{{ route('admin.export_service_provider') }}"
-                                        class="btn btn-success pull-right mx-3">Export Data <i
-                                            class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
+        <!-- END : End Main Content-->
     </div>
-    <!-- END : End Main Content-->
-</div>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript">
-    var users = <?php echo json_encode($new_users); ?>;
-    Highcharts.chart('container', {
-        title: {
-            text: 'New Users Growth - 2022'
-        },
-        subtitle: {
-            text: ' VSHomeService.in'
-        },
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        yAxis: {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        var users = <?php echo json_encode($new_users); ?>;
+        Highcharts.chart('container', {
             title: {
-                text: 'Number of Users'
-            }
-        },
-        legend: {
-            layout: 'horizontal',
-            align: 'center',
-            verticalAlign: 'bottom'
-        },
-        plotOptions: {
-            series: {
-                allowPointSelect: true
-            }
-        },
-        series: [{
-            name: 'New Users',
-            data: users
-        }],
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 300
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
+                text: 'New Users Growth - 2022'
+            },
+            subtitle: {
+                text: ' VSHomeService.in'
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of Users'
                 }
-            }]
-        }
-    });
-</script>
-<script>
-    window.addEventListener('Swal.fire:confirm', event => {
-        Swal.fire({
-            title: event.detail.title,
-            text: event.detail.text,
-            icon: event.detail.type,
-            showCancelButton: event.detail.showCancelButton,
-            confirmButtonColor: event.detail.confirmButtonColor,
-            cancelButtonColor: event.detail.cancelButtonColor,
-
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                window.livewire.emit('delete', event.detail.id)
-            } else if (
-
-            ) {
-                Swal.fire(
-                    'Cancelled',
-                    'Your Data is safe ',
-                    'error'
-                );
+            },
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'New Users',
+                data: users
+            }],
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 300
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
             }
-        })
-    });
-</script>
+        });
+    </script>
+    <script>
+        window.addEventListener('Swal.fire:confirm', event => {
+            Swal.fire({
+                title: event.detail.title,
+                text: event.detail.text,
+                icon: event.detail.type,
+                showCancelButton: event.detail.showCancelButton,
+                confirmButtonColor: event.detail.confirmButtonColor,
+                cancelButtonColor: event.detail.cancelButtonColor,
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    window.livewire.emit('delete', event.detail.id)
+                } else if (
+
+                ) {
+                    Swal.fire(
+                        'Cancelled',
+                        'Your Data is safe ',
+                        'error'
+                    );
+                }
+            })
+        });
+    </script>

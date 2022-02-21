@@ -38,7 +38,7 @@
                                     <strong>VS Home Services Emails</strong><br>
                                     <i class="fa fa-envelope"></i><strong>Email:</strong><a
                                         href="mailto:contact@totalservices.in"> vshomeservices22@gmail.com</a><br>
-                                    
+
                                 </address>
                             </aside>
                             <hr class="tall">
@@ -47,7 +47,7 @@
                             <h3>Get in Touch</h3>
                             <p class="lead">
                             </p>
-                            @if (Session::has('message'))
+                            {{-- @if (Session::has('message'))
                                 <script>
                                     Swal.fire({
                                         icon: 'success',
@@ -55,22 +55,39 @@
                                         text: 'Great Job!',
                                     });
                                 </script>
+                            @endif --}}
+                            @if (Session::has('message'))
+                                <div class="alert alert-success alert-dismissible mb-2" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>{{ Session::get('message') }}</strong>
+                                </div>
                             @endif
                             <form id="contactform" class="form-theme " method="post"
                                 wire:submit.prevent="sendMessage">
                                 @csrf
                                 <input type="text" placeholder="Name" name="name" id="name" wire:model="name"
                                     required="">
-                                @error('name') <p class="text-danger">{{ 'message' }}</p> @enderror
+                                @error('name')
+                                    <p class="text-danger">{{ 'message' }}</p>
+                                @enderror
                                 <input type="email" placeholder="Email" name="email" id="email" wire:model="email"
                                     required="">
-                                @error('email') <p class="text-danger">{{ 'message' }}</p> @enderror
+                                @error('email')
+                                    <p class="text-danger">{{ 'message' }}</p>
+                                @enderror
                                 <input type="text" placeholder="Phone" name="phone" id="phone" wire:model="phone"
                                     required="">
-                                @error('phone') <p class="text-danger">{{ 'message' }}</p> @enderror
+                                @error('phone')
+                                    <p class="text-danger">{{ 'message' }}</p>
+                                @enderror
                                 <textarea placeholder="Your Message" name="message" id="message" wire:model="message"
                                     required=""></textarea>
-                                @error('message') <p class="text-danger">{{ 'message' }}</p> @enderror
+                                @error('message')
+                                    <p class="text-danger">{{ 'message' }}</p>
+                                @enderror
                                 <input type="submit" name="Submit" value="Send Message" class="btn-hover color-hover "
                                     style="width: 200px; margin-top:20px;">
                             </form>

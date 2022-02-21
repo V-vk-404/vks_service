@@ -50,6 +50,6 @@ class AdminUpdateProfileComponent extends Component
     public function render()
     {
         $adminData = User::where('id', Auth::user()->id)->first();
-        return view('livewire.admin.admin-update-profile-component', ['adminData' => $adminData])->layout('FrontEnd.layouts.guest');
+        return view('livewire.admin.admin-update-profile-component', ['adminData' => $adminData])->layout('frontend.layouts.guest');
     }
 }

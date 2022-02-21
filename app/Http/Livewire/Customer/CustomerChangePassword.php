@@ -13,7 +13,7 @@ class CustomerChangePassword extends Component
     public $confirm_password;
     public function render()
     {
-        return view('livewire.customer.customer-change-password')->layout('FrontEnd.layouts.guest');
+        return view('livewire.customer.customer-change-password')->layout('frontend.layouts.guest');
     }
     public function updatePassword()
     {

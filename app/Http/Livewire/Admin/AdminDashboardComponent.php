@@ -18,7 +18,7 @@ class AdminDashboardComponent extends Component
 
     public function render()
     {
-        $totalServiceProvider = User::where('u_type', 'SPV')->paginate(5)->count();
+        $totalServiceProvider = User::where('u_type', 'SPV')->count();
         $totalUser = User::where('u_type', 'CST')->count();
         $totalServiceCategories = ServiceCategory::count();
         $totalAmount = Paytm::all()->sum('price');
@@ -46,6 +46,6 @@ class AdminDashboardComponent extends Component
             'livewire.admin.admin-dashboard-component',
             ['totalServiceProvider' => $totalServiceProvider, 'totalUser' => $totalUser, 'totalServiceCategories' => $totalServiceCategories, 'total' => $total, 'chartData' => $arr, 'sproviders' => $sproviders, 'contacts' => $contacts, 'users' => $users],
             compact('new_users')
-        )->layout('FrontEnd.layouts.guest');
+        )->layout('frontend.layouts.guest');
     }
 }

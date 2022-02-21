@@ -65,6 +65,6 @@ class EditSproviderProfileComponent extends Component
     {
         $scategories = ServiceCategory::all();
         $services = Service::all();
-        return view('livewire.sprovider.edit-sprovider-profile-component', ['scategories' => $scategories, 'services' => $services])->layout('FrontEnd.layouts.guest');
+        return view('livewire.sprovider.edit-sprovider-profile-component', ['scategories' => $scategories, 'services' => $services])->layout('frontend.layouts.guest');
     }
 }

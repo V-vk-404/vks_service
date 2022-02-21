@@ -14,6 +14,6 @@ class SproviderProfileComponent extends Component
     {
         $sprovider= User::where('id',Auth::user()->id)->first();
 
-        return view('livewire.sprovider.sprovider-profile-component',['sprovider'=>$sprovider])->layout('FrontEnd.layouts.guest');
+        return view('livewire.sprovider.sprovider-profile-component',['sprovider'=>$sprovider])->layout('frontend.layouts.guest');
     }
 }

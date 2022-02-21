@@ -21,6 +21,6 @@ class AdminUsersComponent extends Component
     public function render()
     {
         $users = User::where('u_type', 'CST')->paginate(5);
-        return view('livewire.admin.admin-users-component', ['users' => $users])->layout('FrontEnd.layouts.guest');
+        return view('livewire.admin.admin-users-component', ['users' => $users])->layout('frontend.layouts.guest');
     }
 }

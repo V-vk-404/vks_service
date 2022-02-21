@@ -47,6 +47,6 @@ class EditCustomerProfileComponent extends Component
     }
     public function render()
     {
-        return view('livewire.customer.edit-customer-profile-component')->layout('FrontEnd.layouts.guest');
+        return view('livewire.customer.edit-customer-profile-component')->layout('frontend.layouts.guest');
     }
 }
