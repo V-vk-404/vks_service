@@ -82,7 +82,7 @@ $(document).ready(function ($) {
   // Header carousel
   $(".header-carousel").owlCarousel({
     autoplay: true,
-    smartSpeed: 3000,
+    autoplaySpeed: 4000,
     items: 1,
     dots: true,
     loop: true,
